@@ -1,4 +1,4 @@
-/**
+
 
  * vineyards-wine-issue
  
@@ -18,7 +18,3 @@
    First line contains the number of wine bottles sold in aggregate with your solution. Each subsequent line should be two columns, tab separated. The first column is an ID of a person and the second column should be the ID of the wine that they will buy.
    
    
- * @package    WineTaste (Wine Allotment Problem)
- * @author     Ankit Garg <ankitgarg90@gmail.com>
- * @version    1
- */

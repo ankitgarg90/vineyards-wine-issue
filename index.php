@@ -52,7 +52,7 @@ class WineTaste{
      *
      */
 	
-	public function getWineList($input_file){
+	private function _getWineList($input_file){
 	
 	     $fp = fopen($input_file,"r");
 		 while ( !feof($fp) ){
@@ -80,7 +80,7 @@ class WineTaste{
      * this function generate the list of wines that is sold to a person.
      *
      */
-	public function getResults(){
+	private function _getResults(){
 	    
 		foreach ($this->wines_available as $key => $wine){
 		     foreach ($this->wine_with_persons_choice[$wine] as $keys => $person){
@@ -99,12 +99,12 @@ class WineTaste{
 		}
     }
 	/**
-     * function generateResultFile
+     * function _generateResultFile
      *
      * this function creates the tsv file with expected result .
      *
      */
-	public function generateResultFile($output_file_name){
+	private function _generateResultFile($output_file_name){
 	
 	   $fh = fopen($output_file_name, "w");
 	   $heading="Total wines sold by vineyards is - ".$this->total_wines_sold;
@@ -118,9 +118,24 @@ class WineTaste{
 		echo $heading.'<br /> Result has been generated. File name is - '.$output_file_name;		
 	
 	}
+	
+	
+	/**
+     * function getSolution
+     *
+     * this function calls all other function and show results .
+     *
+     */
+	public function getSolution($input_file_name,$output_file_name){
+	
+	  	$this->_getWineList($input_file_name);
+		$this->_getResults();
+		$this->_generateResultFile($output_file_name);	
+	
+	}
 }
-$wine = new WineTaste();
-$wine->getWineList("person_wine_3.txt");
-$wine->getResults();
-$wine->generateResultFile('result_person_wine_3.txt');
+
+$wine_taste = new WineTaste();
+
+$wine_taste->getSolution("person_wine_3.txt","result_person_wine_3.txt");
 ?>
